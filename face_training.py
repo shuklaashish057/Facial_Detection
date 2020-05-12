@@ -5,7 +5,7 @@ import os
 # Path for face image database
 path = 'dataset'
 recognizer = cv2.face.LBPHFaceRecognizer_create()
-detector = cv2.CascadeClassifier("Cascades/haarcascade_frontalface_default.xml")
+detector = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 # function to get the images and label data
 def getImagesAndLabels(path):
     imagePaths = [os.path.join(path,f) for f in os.listdir(path)]    
@@ -27,6 +27,6 @@ print ("\n Wait for a second...")
 faces,ids = getImagesAndLabels(path)
 recognizer.train(faces, np.array(ids))
 
-recognizer.write('trainer/trainer.yml') 
+recognizer.write('trainer.yml') 
 
 print("\n {0} faces trained. Exiting Program".format(len(np.unique(ids))))
